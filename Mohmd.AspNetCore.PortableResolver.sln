@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mohmd.AspNetCore.PortableResolver", "Mohmd.AspNetCore.PortableResolver\Mohmd.AspNetCore.PortableResolver.csproj", "{5F4DA037-7149-4000-A1B6-B4FB50E67260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mohmd.AspNetCore.PortableResolver.Sample", "Mohmd.AspNetCore.PortableResolver.Sample\Mohmd.AspNetCore.PortableResolver.Sample.csproj", "{11DC7AA9-6249-4C8E-A723-EE2D9D5A6F4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F4DA037-7149-4000-A1B6-B4FB50E67260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F4DA037-7149-4000-A1B6-B4FB50E67260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F4DA037-7149-4000-A1B6-B4FB50E67260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F4DA037-7149-4000-A1B6-B4FB50E67260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11DC7AA9-6249-4C8E-A723-EE2D9D5A6F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11DC7AA9-6249-4C8E-A723-EE2D9D5A6F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11DC7AA9-6249-4C8E-A723-EE2D9D5A6F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11DC7AA9-6249-4C8E-A723-EE2D9D5A6F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7C5FE5F-771A-407B-91FE-D1060BEED8FC}
+	EndGlobalSection
+EndGlobal
