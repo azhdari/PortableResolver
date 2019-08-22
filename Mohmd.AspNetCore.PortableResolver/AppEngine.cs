@@ -12,29 +12,15 @@ namespace Mohmd.AspNetCore.PortableResolver
 {
     public class AppEngine : IEngine
     {
-        #region Properties
+        #region Fields
 
-        private IServiceProvider _serviceProvider { get; set; }
+        private IServiceProvider _serviceProvider;
 
         #endregion
 
-        #region Utilities
+        #region Properties
 
-        protected IServiceProvider GetServiceProvider()
-        {
-            var accessor = ServiceProvider.GetService<IHttpContextAccessor>();
-            var context = accessor.HttpContext;
-            return context?.RequestServices ?? ServiceProvider;
-        }
-
-        protected virtual IServiceProvider RegisterDependencies(IServiceCollection services)
-        {
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            //create service provider
-            _serviceProvider = services.BuildServiceProvider();
-            return _serviceProvider;
-        }
+        public virtual IServiceProvider ServiceProvider => _serviceProvider;
 
         #endregion
 
@@ -101,9 +87,23 @@ namespace Mohmd.AspNetCore.PortableResolver
 
         #endregion
 
-        #region Properties
+        #region Utilities
 
-        public virtual IServiceProvider ServiceProvider => _serviceProvider;
+        private IServiceProvider GetServiceProvider()
+        {
+            var accessor = ServiceProvider.GetService<IHttpContextAccessor>();
+            var context = accessor.HttpContext;
+            return context?.RequestServices ?? ServiceProvider;
+        }
+
+        private IServiceProvider RegisterDependencies(IServiceCollection services)
+        {
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //create service provider
+            _serviceProvider = services.BuildServiceProvider();
+            return _serviceProvider;
+        }
 
         #endregion
     }
