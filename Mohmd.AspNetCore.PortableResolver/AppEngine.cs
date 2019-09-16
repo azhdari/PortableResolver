@@ -26,16 +26,12 @@ namespace Mohmd.AspNetCore.PortableResolver
 
         #region Methods
 
-        public IServiceProvider ConfigureServices(IServiceCollection services, IConfiguration configuration)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             //register dependencies
             RegisterDependencies(services);
 
             return _serviceProvider;
-        }
-
-        public void ConfigureRequestPipeline(IApplicationBuilder application)
-        {
         }
 
         public T Resolve<T>() where T : class
@@ -83,6 +79,11 @@ namespace Mohmd.AspNetCore.PortableResolver
             }
 
             throw new Exception("No constructor was found that had all the dependencies satisfied.", innerException);
+        }
+
+        public virtual T ResolveUnregistered<T>()
+        {
+            return (T)ResolveUnregistered(typeof(T));
         }
 
         #endregion

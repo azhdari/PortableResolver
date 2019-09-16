@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,8 +33,7 @@ namespace Mohmd.AspNetCore.PortableResolver.Sample
             services.AddScoped<ChildService>();
 
             // 2. Then initialize the Engine
-            var engine = EngineContext.Create();
-            var serviceProvider = engine.ConfigureServices(services, Configuration);
+            services.AddPortableResolver();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -64,9 +58,6 @@ namespace Mohmd.AspNetCore.PortableResolver.Sample
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            // 3. Configure pipeline here
-            EngineContext.Current.ConfigureRequestPipeline(app);
         }
     }
 }
