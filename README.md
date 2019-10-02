@@ -2,7 +2,7 @@
 Simple, Fast, Reliable, Always-Available ASP.NET Core Service Resolver
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/azhdari/Mohmd.AspNetCore.PortableResolver/blob/master/License.txt)
-[![NuGet](https://img.shields.io/badge/nuget-2.0.0_beta1-blue.svg?style=flat-square)](https://www.nuget.org/packages/Mohmd.AspNetCore.PortableResolver/2.0.0-beta1)
+[![NuGet](https://img.shields.io/badge/nuget-2.0.0_beta2-blue.svg?style=flat-square)](https://www.nuget.org/packages/Mohmd.AspNetCore.PortableResolver/2.0.0-beta2)
 
 ## Getting Started
 Use these instructions to get the package and use it.
@@ -10,15 +10,15 @@ Use these instructions to get the package and use it.
 ### Install
 From the command prompt
 ```bash
-dotnet add package Mohmd.AspNetCore.PortableResolver --version 2.0.0-beta1
+dotnet add package Mohmd.AspNetCore.PortableResolver --version 2.0.0-beta2
 ```
 or
 ```bash
-Install-Package Mohmd.AspNetCore.PortableResolver -Version 2.0.0-beta1
+Install-Package Mohmd.AspNetCore.PortableResolver -Version 2.0.0-beta2
 ```
 or
 ```bash
-paket add Mohmd.AspNetCore.PortableResolver --version 2.0.0-beta1
+paket add Mohmd.AspNetCore.PortableResolver --version 2.0.0-beta2
 ```
 <br/>
 <br/>
