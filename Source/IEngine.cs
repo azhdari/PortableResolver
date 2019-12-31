@@ -6,7 +6,7 @@ namespace Mohmd.AspNetCore.PortableResolver
 {
     public interface IEngine
     {
-        IServiceProvider ConfigureServices(IServiceCollection services);
+        void Configure(IServiceProvider serviceProvider);
 
         T Resolve<T>() where T : class;
 

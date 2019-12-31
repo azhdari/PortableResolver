@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace Mohmd.AspNetCore.PortableResolver
 {
@@ -26,12 +22,9 @@ namespace Mohmd.AspNetCore.PortableResolver
 
         #region Methods
 
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void Configure(IServiceProvider serviceProvider)
         {
-            //register dependencies
-            RegisterDependencies(services);
-
-            return _serviceProvider;
+            _serviceProvider = serviceProvider;
         }
 
         public T Resolve<T>() where T : class
@@ -92,18 +85,9 @@ namespace Mohmd.AspNetCore.PortableResolver
 
         private IServiceProvider GetServiceProvider()
         {
-            var accessor = ServiceProvider.GetService<IHttpContextAccessor>();
-            var context = accessor.HttpContext;
+            var accessor = ServiceProvider?.GetService<IHttpContextAccessor>();
+            var context = accessor?.HttpContext;
             return context?.RequestServices ?? ServiceProvider;
-        }
-
-        private IServiceProvider RegisterDependencies(IServiceCollection services)
-        {
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            //create service provider
-            _serviceProvider = services.BuildServiceProvider();
-            return _serviceProvider;
         }
 
         #endregion

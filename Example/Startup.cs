@@ -19,25 +19,24 @@ namespace Mohmd.AspNetCore.PortableResolver.Sample
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddPortableServices();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // 1. Register everything here
             services.AddScoped<ParentService>();
             services.AddScoped<ChildService>();
-
-            // 2. Then initialize the Engine
-            services.AddPortableResolver();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UsePortableResolver();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

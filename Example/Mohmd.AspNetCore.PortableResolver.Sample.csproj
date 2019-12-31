@@ -13,7 +13,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\Mohmd.AspNetCore.PortableResolver\Mohmd.AspNetCore.PortableResolver.csproj" />
+    <ProjectReference Include="..\Source\Mohmd.AspNetCore.PortableResolver.csproj" />
   </ItemGroup>
 
 </Project>

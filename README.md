@@ -2,7 +2,7 @@
 Simple, Fast, Reliable, Always-Available ASP.NET Core Service Resolver
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/azhdari/Mohmd.AspNetCore.PortableResolver/blob/master/License.txt)
-[![NuGet](https://img.shields.io/badge/nuget-2.0.0_beta2-blue.svg?style=flat-square)](https://www.nuget.org/packages/Mohmd.AspNetCore.PortableResolver/2.0.0-beta2)
+[![NuGet](https://img.shields.io/badge/nuget-2.0.0_beta3-blue.svg?style=flat-square)](https://www.nuget.org/packages/Mohmd.AspNetCore.PortableResolver/2.0.0-beta3)
 
 ## Getting Started
 Use these instructions to get the package and use it.
@@ -10,15 +10,15 @@ Use these instructions to get the package and use it.
 ### Install
 From the command prompt
 ```bash
-dotnet add package Mohmd.AspNetCore.PortableResolver --version 2.0.0-beta2
+dotnet add package Mohmd.AspNetCore.PortableResolver --version 2.0.0-beta3
 ```
 or
 ```bash
-Install-Package Mohmd.AspNetCore.PortableResolver -Version 2.0.0-beta2
+Install-Package Mohmd.AspNetCore.PortableResolver -Version 2.0.0-beta3
 ```
 or
 ```bash
-paket add Mohmd.AspNetCore.PortableResolver --version 2.0.0-beta2
+paket add Mohmd.AspNetCore.PortableResolver --version 2.0.0-beta3
 ```
 <br/>
 <br/>
@@ -28,13 +28,17 @@ Add service
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-  // 1. Register everything here
   services.AddScoped<Service1>();
   services.AddScoped<Service2>();
-  // ...
 
-  // 2. Then initialize the Engine
+  // 1. First add portable-resolver required services
   services.AddPortableResolver();
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+  // 2. Then prepare the app to use it.
+  app.UsePortableResolver();
 }
 ```
 <br/>
