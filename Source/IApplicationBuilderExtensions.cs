@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Mohmd.AspNetCore.PortableResolver;
 
-namespace Mohmd.AspNetCore.PortableResolver
+namespace Microsoft.AspNetCore.Builder
 {
     public static class IApplicationBuilderExtensions
     {

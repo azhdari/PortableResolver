@@ -5,11 +5,12 @@
     <Authors>Mohammad Azhdari</Authors>
     <Copyright>MIT</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>2.0.0-beta3</Version>
+    <Version>2.0.0-beta5</Version>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <PackageProjectUrl>https://github.com/azhdari/PortableResolver</PackageProjectUrl>
     <RepositoryUrl>https://github.com/azhdari/PortableResolver</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
+    <Description>Simple, Fast, Reliable, Always-Available ASP.NET Core Service Resolver</Description>
   </PropertyGroup>
   
   <ItemGroup>

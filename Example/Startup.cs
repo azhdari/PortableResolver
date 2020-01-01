@@ -19,7 +19,7 @@ namespace Mohmd.AspNetCore.PortableResolver.Sample
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddPortableServices();
+            services.AddPortableResolver();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
