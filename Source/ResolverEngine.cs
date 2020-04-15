@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Mohmd.AspNetCore.PortableResolver
 {
-    public class AppEngine : IEngine
+    public class ResolverEngine : IEngine
     {
         #region Fields
 

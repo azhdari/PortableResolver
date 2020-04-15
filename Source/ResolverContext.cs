@@ -2,7 +2,7 @@
 
 namespace Mohmd.AspNetCore.PortableResolver
 {
-    public class EngineContext
+    public class ResolverContext
     {
         #region Properties
 
@@ -33,7 +33,7 @@ namespace Mohmd.AspNetCore.PortableResolver
         public static IEngine Create()
         {
             //create AppEngine as engine
-            return Singleton<IEngine>.Instance ?? (Singleton<IEngine>.Instance = new AppEngine());
+            return Singleton<IEngine>.Instance ?? (Singleton<IEngine>.Instance = new ResolverEngine());
         }
 
         /// <summary>

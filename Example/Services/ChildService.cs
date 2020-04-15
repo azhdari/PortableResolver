@@ -17,7 +17,7 @@ namespace Mohmd.AspNetCore.PortableResolver.Sample.Services
 
         public string GetParentName()
         {
-            var parentService = EngineContext.Current.Resolve<ParentService>();
+            var parentService = ResolverContext.Current.Resolve<ParentService>();
             return parentService.Name;
         }
     }

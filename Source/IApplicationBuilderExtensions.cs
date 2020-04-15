@@ -6,7 +6,7 @@ namespace Microsoft.AspNetCore.Builder
     {
         public static IApplicationBuilder UsePortableResolver(this IApplicationBuilder app)
         {
-            EngineContext.Create().Configure(app.ApplicationServices);
+            ResolverContext.Create().Configure(app.ApplicationServices);
             return app;
         }
     }
