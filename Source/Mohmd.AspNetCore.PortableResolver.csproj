@@ -5,7 +5,7 @@
     <Authors>Mohammad Azhdari</Authors>
     <Copyright>MIT</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>3.0.0</Version>
+    <Version>3.1.0</Version>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <PackageProjectUrl>https://github.com/azhdari/PortableResolver</PackageProjectUrl>
     <RepositoryUrl>https://github.com/azhdari/PortableResolver</RepositoryUrl>

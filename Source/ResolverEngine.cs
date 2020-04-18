@@ -56,7 +56,7 @@ namespace Mohmd.AspNetCore.PortableResolver
                         var service = Resolve(parameter.ParameterType);
                         if (service == null)
                         {
-                            throw new Exception("Unknown dependency");
+                            throw new Exception($"Unknown dependency `{parameter.ParameterType.FullName}`");
                         }
 
                         return service;
