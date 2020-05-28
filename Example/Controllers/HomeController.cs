@@ -18,6 +18,7 @@ namespace Mohmd.AspNetCore.PortableResolver.Sample.Controllers
         {
             string child = _childService.Name;
             string parent = _childService.GetParentName();
+            string parentScoped = _childService.GetParentNameScoped();
 
             return View();
         }

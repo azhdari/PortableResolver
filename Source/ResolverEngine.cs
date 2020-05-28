@@ -6,10 +6,11 @@ using System.Linq;
 
 namespace Mohmd.AspNetCore.PortableResolver
 {
-    public class ResolverEngine : IEngine
+    public class ResolverEngine : IEngine, IDisposable
     {
         #region Fields
 
+        private IServiceScope _serviceScope = null;
         private IServiceProvider _serviceProvider;
 
         #endregion
@@ -25,6 +26,12 @@ namespace Mohmd.AspNetCore.PortableResolver
         public void Configure(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
+        }
+
+        internal void Configure(IServiceScope serviceScope)
+        {
+            _serviceScope = serviceScope;
+            _serviceProvider = serviceScope.ServiceProvider;
         }
 
         public T Resolve<T>() where T : class
@@ -79,12 +86,23 @@ namespace Mohmd.AspNetCore.PortableResolver
             return (T)ResolveUnregistered(typeof(T));
         }
 
+        public void Dispose()
+        {
+            _serviceScope?.Dispose();
+        }
+
         #endregion
 
         #region Utilities
 
         private IServiceProvider GetServiceProvider()
         {
+            // if there is a scope, it means we should not use http-context RequestedServices
+            if (_serviceScope != null)
+            {
+                return _serviceProvider;
+            }
+
             var accessor = ServiceProvider?.GetService<IHttpContextAccessor>();
             var context = accessor?.HttpContext;
             return context?.RequestServices ?? ServiceProvider;

@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Runtime.CompilerServices;
 
 namespace Mohmd.AspNetCore.PortableResolver
 {
@@ -34,6 +36,19 @@ namespace Mohmd.AspNetCore.PortableResolver
         {
             //create AppEngine as engine
             return Singleton<IEngine>.Instance ?? (Singleton<IEngine>.Instance = new ResolverEngine());
+        }
+
+        public static IEngine CreateNew()
+        {
+            var engine = new ResolverEngine();
+
+            if (Current is ResolverEngine rootEngine)
+            {
+                var scope = rootEngine.ServiceProvider.CreateScope();
+                engine.Configure(scope);
+            }
+
+            return engine;
         }
 
         /// <summary>

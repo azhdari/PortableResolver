@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Mohmd.AspNetCore.PortableResolver
 {
-    public interface IEngine
+    public interface IEngine: IDisposable
     {
         void Configure(IServiceProvider serviceProvider);
 

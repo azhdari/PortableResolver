@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mohmd.AspNetCore.PortableResolver.Sample.Services
+﻿namespace Mohmd.AspNetCore.PortableResolver.Sample.Services
 {
     public class ChildService
     {
@@ -19,6 +13,15 @@ namespace Mohmd.AspNetCore.PortableResolver.Sample.Services
         {
             var parentService = ResolverContext.Current.Resolve<ParentService>();
             return parentService.Name;
+        }
+
+        public string GetParentNameScoped()
+        {
+            using (var engine = ResolverContext.CreateNew())
+            {
+                var parentService = engine.Resolve<ParentService>();
+                return parentService.Name;
+            }
         }
     }
 }
