@@ -2,7 +2,7 @@
 Simple, Fast, Reliable, Always-Available ASP.NET Core Service Resolver
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/azhdari/Mohmd.AspNetCore.PortableResolver/blob/master/License.txt)
-[![NuGet](https://img.shields.io/badge/nuget-3.0.0-blue.svg?style=flat-square)](https://www.nuget.org/packages/Mohmd.AspNetCore.PortableResolver/3.0.0)
+[![NuGet](https://img.shields.io/badge/nuget-3.2.0-blue.svg?style=flat-square)](https://www.nuget.org/packages/Mohmd.AspNetCore.PortableResolver)
 
 ## Getting Started
 Use these instructions to get the package and use it.
@@ -10,15 +10,15 @@ Use these instructions to get the package and use it.
 ### Install
 From the command prompt
 ```bash
-dotnet add package Mohmd.AspNetCore.PortableResolver --version 3.0.0
+dotnet add package Mohmd.AspNetCore.PortableResolver
 ```
 or
 ```bash
-Install-Package Mohmd.AspNetCore.PortableResolver -Version 3.0.0
+Install-Package Mohmd.AspNetCore.PortableResolver
 ```
 or
 ```bash
-paket add Mohmd.AspNetCore.PortableResolver --version 3.0.0
+paket add Mohmd.AspNetCore.PortableResolver
 ```
 <br/>
 <br/>
@@ -78,4 +78,23 @@ services.AddScoped<BarService>();
 
 // Usage
 var service = ResolverContext.Current.ResolveUnregistered<FooUnregisteredService>();
+```
+<br/>
+
+#### Scoped ResolverEngine  
+We cannot resolve AddScoped services from root service provider.
+Or maybe other situation that we might need scoped service providers.  
+At this case, we need to create a brand new engine, exclusively for that purpose.
+Remeber to use `using` syntax to dispose scoped engine properly.
+
+```csharp
+using (var engine = ResolverContext.CreateNew())
+{
+    // Resolve a single registered service
+    engine.Resolve(typeof(FooService));
+    engine.Resolve<FooService>();
+
+    // Resolve a service with multiple registrations
+    engine.ResolveAll<BarService>();
+}
 ```
