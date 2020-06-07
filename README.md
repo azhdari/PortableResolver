@@ -38,7 +38,7 @@ public void ConfigureServices(IServiceCollection services)
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
   // 2. Then prepare the app to use it.
-  app.UsePortableResolver();
+  app.ConfigurePortableResolver();
 }
 ```
 <br/>
