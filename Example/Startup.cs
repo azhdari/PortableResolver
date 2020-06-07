@@ -35,7 +35,7 @@ namespace Mohmd.AspNetCore.PortableResolver.Sample
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UsePortableResolver();
+            app.ConfigurePortableResolver();
 
             if (env.IsDevelopment())
             {

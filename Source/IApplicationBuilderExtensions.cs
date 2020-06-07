@@ -4,7 +4,7 @@ namespace Microsoft.AspNetCore.Builder
 {
     public static class IApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UsePortableResolver(this IApplicationBuilder app)
+        public static IApplicationBuilder ConfigurePortableResolver(this IApplicationBuilder app)
         {
             ResolverContext.Create().Configure(app.ApplicationServices);
             return app;

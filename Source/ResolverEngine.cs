@@ -41,12 +41,12 @@ namespace Mohmd.AspNetCore.PortableResolver
 
         public object Resolve(Type type)
         {
-            return GetServiceProvider().GetService(type);
+            return GetServiceProvider()?.GetService(type);
         }
 
         public virtual IEnumerable<T> ResolveAll<T>()
         {
-            return (IEnumerable<T>)GetServiceProvider().GetServices(typeof(T));
+            return (IEnumerable<T>)GetServiceProvider()?.GetServices(typeof(T));
         }
 
         public virtual object ResolveUnregistered(Type type)
@@ -89,6 +89,7 @@ namespace Mohmd.AspNetCore.PortableResolver
         public void Dispose()
         {
             _serviceScope?.Dispose();
+            _serviceScope = null;
         }
 
         #endregion
@@ -97,10 +98,15 @@ namespace Mohmd.AspNetCore.PortableResolver
 
         private IServiceProvider GetServiceProvider()
         {
+            if (ServiceProvider is null)
+            {
+                return null;
+            }
+
             // if there is a scope, it means we should not use http-context RequestedServices
             if (_serviceScope != null)
             {
-                return _serviceProvider;
+                return ServiceProvider;
             }
 
             var accessor = ServiceProvider?.GetService<IHttpContextAccessor>();

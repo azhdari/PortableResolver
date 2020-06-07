@@ -42,10 +42,16 @@ namespace Mohmd.AspNetCore.PortableResolver
         {
             var engine = new ResolverEngine();
 
-            if (Current is ResolverEngine rootEngine)
+            var instance = Singleton<IEngine>.Instance;
+
+            if (instance is ResolverEngine rootEngine)
             {
-                var scope = rootEngine.ServiceProvider.CreateScope();
-                engine.Configure(scope);
+                var scope = rootEngine?.ServiceProvider?.CreateScope();
+
+                if (scope != null)
+                {
+                    engine.Configure(scope);
+                }
             }
 
             return engine;
