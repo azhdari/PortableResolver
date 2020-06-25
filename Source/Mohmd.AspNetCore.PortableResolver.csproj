@@ -11,7 +11,15 @@
     <RepositoryUrl>https://github.com/azhdari/PortableResolver</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <Description>Simple, Fast, Reliable, Always-Available ASP.NET Core Service Resolver</Description>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
   
   <ItemGroup>
     <None Include="..\LICENSE">
